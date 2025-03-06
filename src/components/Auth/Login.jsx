@@ -20,7 +20,7 @@ const Login = ({ handleLogin }) => {
     return (
 
 
-        <div className='flex h-screen w-screen items-center  bg-contain bg-[url(./assets/bg4.jpg)] justify-between'>
+        <div className='flex h-screen w-screen items-center  bg-contain  justify-between'>
             <div className=' p-10 w-full text-7xl leading-20 justify-self-start text-center '>Task <br /> Management <br /> System</div>
             <div>
                 <div className='  shadow-black shadow-2xl rounded-2xl'>
