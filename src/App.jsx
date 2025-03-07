@@ -34,20 +34,27 @@ const App = () => {
   // let adminData = authData.admin
   // let empData = authData.employees
 
-  // useEffect(() => {
-  //   if (authData) {
-  //     const loggedInUser = localStorage.getItem('loggedInUser')
+  useEffect(() => {
+    if (authData) {
+      const loggedInUser = localStorage.getItem('loggedInUser')
 
-  //     if (loggedInUser) {
+      if (loggedInUser) {
+        const userData = JSON.parse(loggedInUser)
+        setUser(userData.role)
+        setLoggedInUserData(userData.data)
 
-  //     }
-  //   }
+
+      }
+    }
 
 
-  // }, [authData])
+  }, [authData])
+
 
 
   const handleLogin = (email, password) => {
+
+
     if (authData) {      //(email == 'admin@example.com' && password == '123')
 
 
@@ -57,46 +64,31 @@ const App = () => {
       const combinedData = { Admin, employee }
 
 
-      if (Admin) {
-        setUser('admin')
-        localStorage.setItem('loggedInUser', JSON.stringify('admin'))
-        setLoggedInUserData(authData)
-
-        // console.log()
-
-      } else if (employee) {        //(email == 'user@example.com' && password == '123')
+      if (employee) {        //(email == 'user@example.com' && password == '123')
 
         setUser('employee')
-        localStorage.setItem('loggedInUser', JSON.stringify('user'))
+        localStorage.setItem('loggedInUser', JSON.stringify({ role: 'employee', data: employee }))
 
         setLoggedInUserData(employee)
 
         console.log(employee)
 
 
-      } else {
+      } else if (Admin) {
+        setUser('admin')
+        localStorage.setItem('loggedInUser', JSON.stringify({ role: 'admin', data: authData }))
+        setLoggedInUserData(authData)
+
+        // console.log()
+
+      }
+      else {
         console.log('invalid details')
         alert('Incorrect Email or password !!!!!')
       }
     }
 
-    // const keepLoggedIn = (value) => {
-    //   if (JSON.parse(localStorage.getItem('checkLogin').role) == value) {
-
-    //   } else if (JSON.parse(localStorage.getItem('loggedInUser').role) == value) {
-    //     console.log(value)
-    //   }
-    // }
-
-
-
   }
-
-
-
-
-
-
 
 
 
