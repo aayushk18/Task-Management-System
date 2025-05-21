@@ -79,30 +79,105 @@ const CreateTask = () => {
 
 
     return (
-        <div className='h-fit w-full p-10 '>
-            <form onSubmit={(e) => { formFiller(e) }} className=' grid grid-cols-2 p-15 gap-15 shadow-2xl bg-[rgb(40,40,40)] rounded-4xl shadow-black'>
-                <h2>Title <br /> <input value={task_title} onChange={(e) => { setTaskTitle(e.target.value) }} required type="text" placeholder='Title of your Task' className=' p-5  rounded-md  inset-shadow-gray-950 w-full  inset-shadow-sm placeholder: border-gray-200 ' /></h2>
-                <h2>Date <br /><input value={task_date} onChange={(e) => { setTaskDate(e.target.value) }} required type='date' className=' p-5 rounded-md w-full  inset-shadow-gray-950   inset-shadow-sm placeholder: border-gray-200' /></h2>
-                <h2 className='row-start-2 row-end-5 '>Discription <br /><textarea value={task_description} onChange={(e) => { setTaskDescription(e.target.value) }} required name="" id="description" placeholder='Desribe....' cols="30" rows="10" className='rounded-md p-5 h-fit w-full inset-shadow-gray-950  inset-shadow-sm placeholder: border-gray-200 ' ></textarea> </h2>
+       
+        <div className='h-fit w-full p-4 sm:p-6 md:p-10'>
+            <form
+                onSubmit={(e) => formFiller(e)}
+                className='grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 p-6 md:p-10 shadow-2xl bg-[rgb(40,40,40)] rounded-3xl shadow-black'
+            >
+               
+                <div>
+                    <label className='block text-white mb-2'>Title</label>
+                    <input
+                        value={task_title}
+                        onChange={(e) => setTaskTitle(e.target.value)}
+                        required
+                        type="text"
+                        placeholder='Title of your Task'
+                        className='p-4 rounded-md w-full  text-white placeholder-gray-400   inset-shadow-gray-950 inset-shadow-sm '
+                    />
+                </div>
 
-                <h2>Assign To <br /><div value={asignTo} onClick={() => { AssignToFunc() }} className='rounded-md relative w-full inset-shadow-gray-950   inset-shadow-sm placeholder: border-gray-200 ' >
-                    <div id='assToMsg' style={{ display: 'block' }} className='p-5'>{toSetAssign}</div>
-                    <div id='list' style={{ display: 'none' }} className=' overflow-scroll bg-[rgb(50,50,50)]  h-40 absolute  rounded-md shadow-gray-950 shadow-2xl '>
+               
+                <div>
+                    <label className='block text-white mb-2'>Date</label>
+                    <input
+                        value={task_date}
+                        onChange={(e) => setTaskDate(e.target.value)}
+                        required
+                        type="date"
+                        className='p-4 rounded-md w-full  text-white placeholder-gray-400  inset-shadow-gray-950 inset-shadow-sm '
+                    />
+                </div>
 
-                        {Data.map((el) => {
-                            return <div key={el.name || el.name + el.surname} className='p-5 cursor-pointer' onClick={() => { setToSetAssign(el.name + ' ' + el.surname); setAssignTo(el.name + ' ' + el.surname); }}>{el.name + ' ' + el.surname}</div>
+              
+                <div className='md:col-span-2'>
+                    <label className='block text-white mb-2'>Description</label>
+                    <textarea
+                        value={task_description}
+                        onChange={(e) => setTaskDescription(e.target.value)}
+                        required
+                        placeholder='Describe your task...'
+                        rows="6"
+                        className='p-4 rounded-md w-full  text-white placeholder-gray-400  inset-shadow-gray-950 inset-shadow-sm '
+                    />
+                </div>
 
-                        })}
-
+               
+                <div>
+                    <label className='block text-white mb-2'>Assign To</label>
+                    <div
+                        onClick={() => AssignToFunc()}
+                        className='relative p-4 rounded-md w-full text-white inset-shadow-gray-950 inset-shadow-sm  cursor-pointer'
+                    >
+                        <div id='assToMsg'>{toSetAssign}</div>
+                        <div
+                            id='list'
+                            style={{ display: 'none' }}
+                            className='overflow-y-auto bg-[rgb(50,50,50)] h-40 absolute w-full mt-2 rounded-md shadow-2xl z-10'
+                        >
+                            {Data.map((el) => (
+                                <div
+                                    key={el.name + el.surname}
+                                    className='p-3 hover:bg-gray-700 cursor-pointer'
+                                    onClick={() => {
+                                        setToSetAssign(el.name + ' ' + el.surname);
+                                        setAssignTo(el.name + ' ' + el.surname);
+                                    }}
+                                >
+                                    {el.name + ' ' + el.surname}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
 
-                </h2>
+              
+                <div>
+                    <label className='block text-white mb-2'>Category</label>
+                    <input
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                        required
+                        type="text"
+                        placeholder='Category'
+                        className='p-4 rounded-md w-full text-white placeholder-gray-400  inset-shadow-gray-950 inset-shadow-sm '
+                    />
+                </div>
 
-                <h2>Category <br /><input value={category} onChange={(e) => { setCategory(e.target.value) }} required type="text" placeholder='Category' name="" id="" className=' w-full rounded-md p-5  inset-shadow-gray-950   inset-shadow-sm placeholder: border-gray-200' /></h2>
-                <button type="submit" className=' p-3 bg-red-600 shadow-md   shadow-gray-900 hover:shadow-none hover:translate-y-0.5 w-full rounded-md cursor-pointer'>Create Task</button>
+           
+                <div className='md:col-span-2'>
+                    <button
+                        type="submit"
+                        className='p-4 bg-red-600 text-white font-semibold shadow-md shadow-gray-900 hover:shadow-none hover:translate-y-0.5 w-full rounded-md transition-all duration-150'
+                    >
+                        Create Task
+                    </button>
+                </div>
             </form>
         </div>
+
+
     )
 }
 
