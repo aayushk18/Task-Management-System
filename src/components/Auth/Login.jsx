@@ -18,30 +18,63 @@ const Login = ({ handleLogin }) => {
     }
 
     return (
+<div className="min-h-screen w-full flex flex-col justify-center items-center bg-cover p-5">
+            <div className="flex flex-col lg:flex-row justify-around  items-center w-full max-w-8xl">
 
 
-        <div className='flex h-screen w-screen items-center  bg-contain  justify-between'>
-            <div className=' p-10 w-full text-7xl leading-20 justify-self-start text-center '>Task <br /> Management <br /> System</div>
-            <div>
-                <div className='  shadow-black shadow-2xl rounded-2xl'>
-                    <form onSubmit={(e) => {
-                        SubmitHandler(e);
-                        // alert("form has been submitted!!!");
-                    }} className='flex flex-col items-center bg-[rgb(40,40,40)] rounded-2xl justify-center p-15'>
-                        <input value={email} onChange={(e) => { setEmail(e.target.value) }} required className='  bg-transparent placeholder-gray-400 inset-9 inset-shadow-black inset-shadow-sm rounded-2xl w-80 h-15 px-3 ' type="Email" placeholder=' Enter your Email' />
-                        <input value={password} onChange={(e) => { setPassword(e.target.value) }} required className='  bg-transparent placeholder-gray-400 inset-2 inset-shadow-black inset-shadow-sm rounded-2xl w-80 h-15 px-3 mt-10 ' type="Password" placeholder=' Enter your Password' />
-                        <button className='  bg-red-600 shadow-gray-900 font-semibold hover:translate-y-0.5 cursor-pointer hover:shadow-none shadow-md rounded-full w-80 h-15 mt-10'>Login</button>
-                    </form>
+                <div className="w-full text-center lg:text-left mb-10 lg:mb-0 p-4">
+                    <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                        Task <br /> Management <br /> System
+                    </div>
+                </div>
+
+
+                <div className="w-full max-w-md mb-10 lg:mb-0 p-4">
+                    <div className="shadow-black shadow-2xl rounded-2xl">
+                        <form
+                            onSubmit={(e) => {
+                                SubmitHandler(e);
+                            }}
+                            className="flex flex-col items-center bg-[rgb(40,40,40)] rounded-2xl p-8"
+                        >
+                            <input
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                type="email"
+                                placeholder="Enter your Email"
+                                className="bg-transparent text-white placeholder-gray-400 shadow-inner shadow-black rounded-xl w-full h-12 px-4 mb-6"
+                            />
+                            <input
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                                type="password"
+                                placeholder="Enter your Password"
+                                className="bg-transparent text-white placeholder-gray-400 shadow-inner shadow-black rounded-xl w-full h-12 px-4 mb-6"
+                            />
+                            <button
+                                type="submit"
+                                className="bg-red-600 text-white font-semibold hover:translate-y-0.5 hover:shadow-none shadow-md shadow-gray-900 rounded-full w-full h-12 mt-4"
+                            >
+                                Login
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div className="w-full text-center lg:justify-items-center lg:content-center lg:text-left p-4">
+                    <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+                        Sign Up
+                    </div>
+                    <button className="h-12 w-32 bg-red-600  text-white text-xl font-semibold rounded-xl">
+                        Here
+                    </button>
                 </div>
             </div>
-            <div className='p-10 w-full justify-items-center '>
-                <div className='p-10 w-full leading-20 text-7xl text-center'> Sign Up</div>
-                <button className='h-15 rounded-xl cursor-pointer font-semibold text-xl w-40 bg-red-600'>Here</button>
-            </div>
-
-
-
         </div>
+
 
     )
 }
