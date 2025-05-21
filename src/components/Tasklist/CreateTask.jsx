@@ -80,10 +80,10 @@ const CreateTask = () => {
 
     return (
        
-        <div className='h-fit w-full p-4 sm:p-6 md:p-10'>
+        <div className='h-fit w-full  sm:p-6 md:p-10'>
             <form
                 onSubmit={(e) => formFiller(e)}
-                className='grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 p-6 md:p-10 shadow-2xl bg-[rgb(40,40,40)] rounded-3xl shadow-black'
+                className='grid grid-cols-1 m-10 md:grid-cols-2 gap-6 sm:gap-8 p-6 md:p-10 shadow-2xl bg-[rgb(40,40,40)] rounded-3xl shadow-black'
             >
                
                 <div>
