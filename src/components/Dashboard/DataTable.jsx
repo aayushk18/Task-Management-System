@@ -6,30 +6,62 @@ const DataTable = ({ Data }) => {
     console.log(Data[0].tasks)
 
     const [sliceValue, setSliceValue] = useState(3)
-
     const [expandValue, setExpandValue] = useState('See More')
-
-    let isExpand = true
-
+    const [isExpand, setIsExpand] = useState(true)
 
 
-    const setTableSize = () => {
+
+    const setTableSize = (e) => {
+
+        console.log("clicking...");
+
+        e.preventDefault()
         if (isExpand) {
             setSliceValue(5)
             setExpandValue('See Less')
-            isExpand = false
+
         } else {
             setSliceValue(3)
             setExpandValue('See More')
-            isExpand = true
+
         }
+
+        setIsExpand(!isExpand)
 
 
     }
 
 
     return (
-      <div className='w-full'>
+        // <div className=' w-full '>
+        //     <div className='m-10 p-10 shadow-2xl bg-[rgb(40,40,40)] shadow-black rounded-4xl'>
+        //         {/* ---------------------- head -------------------------- */}
+
+        //         <div className='flex flex-row  inset-shadow-sm p-5 bg-red-600 inset-shadow-black rounded-2xl m-5 py-8 '>
+        //             <div className='w-full font-bold text-center'>Employee Name</div>
+        //             <div className='w-full font-bold text-center'>New Task</div>
+        //             <div className='w-full font-bold text-center'>Active Task</div>
+        //             <div className='w-full font-bold text-center'>Completed</div>
+        //             <div className='w-full font-bold text-center'>Failed</div>
+        //         </div>
+
+        //         {/* --------------------- content-------------------------- */}
+        //         <div className=' overflow-hidden  '>
+        //             {userData.slice(0, sliceValue).map((el) => {
+
+        //                 return <TaskAdminDetail key={el.name} el={el} />
+
+
+
+        //             })}
+        //         </div>
+        //         <div className='w-full text-center cursor-pointer hover:scale-110 ease-in-out transition duration-500  text-amber-300 ' onClick={() => { setTableSize() }}>{expandValue}</div>
+
+        //     </div>
+        // </div>
+
+
+        <div className='w-full'>
             <div className='m-4 sm:m-6 md:m-10 p-4 sm:p-6 md:p-10 shadow-2xl bg-[rgb(40,40,40)] shadow-black rounded-3xl'>
 
                 <div className='hidden md:flex flex-row p-5 bg-red-600 shadow-inner shadow-black rounded-2xl mb-5'>
@@ -64,12 +96,13 @@ const DataTable = ({ Data }) => {
                 </div>
 
 
-                <div
-                    className='w-full text-center mt-6 cursor-pointer text-amber-300 hover:scale-110 ease-in-out transition duration-500'
-                    onClick={() => setTableSize()}
-                >
+
+                <button type='button'
+                    className='w-full text-center mt-6  relative z-30 cursor-pointer  hover:scale-110 ease-in-out transition duration-500'
+                    onClick={(e) => setTableSize(e)} >
                     {expandValue}
-                </div>
+                </button>
+
             </div>
         </div>
     )
